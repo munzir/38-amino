@@ -628,7 +628,7 @@ AA_API void aa_tf_duqu( const double d[AA_RESTRICT 8], const double p0[AA_RESTRI
 AA_API void aa_tf_duqu_trans( const double d[AA_RESTRICT 8], double v[AA_RESTRICT 3] );
 
 /** Dual quaternion normalization */
-AA_API void aa_tf_duqu2ftmat( const double d[AA_RESTRICT 8], double T[AA_RESTRICT 12] );
+AA_API void aa_tf_duqu2tfmat( const double d[AA_RESTRICT 8], double T[AA_RESTRICT 12] );
 
 /** Dual quaternion normalization */
 AA_API void aa_tf_tfmat2duqu( const double T[AA_RESTRICT 12], double d[AA_RESTRICT 8] ) ;
@@ -672,8 +672,8 @@ AA_API void aa_tf_duqu_stwist( const double d0[AA_RESTRICT 8], const double twis
  * \param dt time step
  * \param d1 final position, dual quaternion
  */
-AA_API void aa_tf_duqu_svel( const double d0[AA_RESTRICT 8], const double dd[AA_RESTRICT 8],
-                             double dt, double d1[AA_RESTRICT 6] ) ;
+AA_API void aa_tf_duqu_svel( const double d0[AA_RESTRICT 8], const double dx[AA_RESTRICT 6],
+                             double dt, double d1[AA_RESTRICT 8] ) ;
 
 /** Dual quaternion derivative integration .
  * \param d0 initial position, dual quaternion
