@@ -164,4 +164,4 @@ clean-local:
 		$(EXTRA_DX)                 \
 		*.mod
 
-include aminclude.am
+#include aminclude.am
