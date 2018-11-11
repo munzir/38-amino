@@ -417,12 +417,10 @@ pure subroutine AA_FMOD(la,3spline) (t, x1, dx1, a2, a3, x, dx, ddx)
   ddx = 2*a2 + 6*t*a3
 end subroutine AA_FMOD(la,3spline)
 
-subroutine AA_FMOD_C_BEGIN(la, 3spline_param, n, tf, x1, incx1,&
-                dx1, incdx1, x2, incx2, dx2, incdx2, a2, a3 )
+subroutine AA_FMOD_C_BEGIN(la, 3spline_param, n, tf, x1, incx1, dx1, incdx1, x2, incx2, dx2, incdx2, a2, a3 )
   integer(c_size_t), intent(in), value :: n, incx1, incdx1, incx2, incdx2
   real(AA_FSIZE), value  :: tf
-  real(AA_FSIZE), intent(in)  :: x1(n*incx1), x2(n*incx2), &
-          dx1(n*incdx1), dx2(n*incdx2)
+  real(AA_FSIZE), intent(in)  :: x1(n*incx1), x2(n*incx2), dx1(n*incdx1), dx2(n*incdx2)
   real(AA_FSIZE), intent(out) :: a2(n), a3(n)
   call aa_la_3spline_param(tf, &
        x1(1:size(x1):incx1), dx1(1:size(dx1):incdx1),  &
@@ -430,8 +428,7 @@ subroutine AA_FMOD_C_BEGIN(la, 3spline_param, n, tf, x1, incx1,&
        a2, a3 )
 end subroutine AA_FMOD_C_END(la,3spline_param)
 
-subroutine AA_FMOD_C_BEGIN(la, 3spline, n, tf, x1, incx1, dx1,&
-                incdx1, a2, a3, x, incx, dx, incdx, ddx, incddx )
+subroutine AA_FMOD_C_BEGIN(la, 3spline, n, tf, x1, incx1, dx1, incdx1, a2, a3, x, incx, dx, incdx, ddx, incddx )
   integer(c_size_t), intent(in), value :: n, incx1, incdx1, incx, incdx, incddx
   real(AA_FSIZE), value  :: tf
   real(AA_FSIZE), intent(in)  :: x1(n*incx1), dx1(n*incdx1), a2(n), a3(n)
@@ -443,8 +440,7 @@ end subroutine AA_FMOD_C_END(la,3spline)
 
 !> Compute quintic spline parameters for time from x1 to x2
 !> Note, a0 = x1, a1 = dx1, and a2 = ddx1/2
-pure subroutine AA_FMOD(la,5spline_param) (tf, x1, dx1, ddx1,&
-                x2, dx2, ddx2, a3, a4, a5)
+pure subroutine AA_FMOD(la,5spline_param) (tf, x1, dx1, ddx1, x2, dx2, ddx2, a3, a4, a5)
   real(AA_FSIZE), intent(in) :: tf
   real(AA_FSIZE), dimension(:), intent(in)  :: x1, x2, dx1, dx2, ddx1, ddx2
   real(AA_FSIZE), dimension(:), intent(out) :: a3, a4, a5
@@ -462,14 +458,10 @@ pure subroutine AA_FMOD(la,5spline) (t, x1, dx1, ddx1, a3, a4, a5, x, dx, ddx)
   ddx = ddx1 + 6*t*a3 + 12*t**2*a4 + 20*t**3*a5
 end subroutine AA_FMOD(la,5spline)
 
-subroutine AA_FMOD_C_BEGIN(la, 5spline_param, n, tf, x1, incx1, dx1,&
-                incdx1, ddx1, incddx1, x2, incx2, dx2, incdx2, ddx2,&
-                incddx2, a3, a4, a5 )
-  integer(c_size_t), intent(in), value :: n, incx1, incdx1, incx2,&
-          incdx2, incddx1, incddx2
+subroutine AA_FMOD_C_BEGIN(la, 5spline_param, n, tf, x1, incx1, dx1, incdx1, ddx1, incddx1, x2, incx2, dx2, incdx2, ddx2, incddx2, a3, a4, a5 )
+  integer(c_size_t), intent(in), value :: n, incx1, incdx1, incx2, incdx2, incddx1, incddx2
   real(AA_FSIZE), value  :: tf
-  real(AA_FSIZE), intent(in)  :: x1(n*incx1), x2(n*incx2),&
-          dx1(n*incdx1), dx2(n*incdx2), ddx1(n*incddx1), ddx2(n*incddx2)
+  real(AA_FSIZE), intent(in)  :: x1(n*incx1), x2(n*incx2), dx1(n*incdx1), dx2(n*incdx2), ddx1(n*incddx1), ddx2(n*incddx2)
   real(AA_FSIZE), intent(out) :: a3(n), a4(n), a5(n)
   call aa_la_5spline_param(tf, &
        x1(1:size(x1):incx1), dx1(1:size(dx1):incdx1), ddx1(1:size(ddx1):incddx1),  &
@@ -477,10 +469,8 @@ subroutine AA_FMOD_C_BEGIN(la, 5spline_param, n, tf, x1, incx1, dx1,&
        a3, a4, a5 )
 end subroutine AA_FMOD_C_END(la,5spline_param)
 
-subroutine AA_FMOD_C_BEGIN(la, 5spline, n, tf, x1, incx1, dx1, incdx1,&
-                ddx1, incddx1, a3, a4, a5, x, incx, dx, incdx, ddx, incddx )
-  integer(c_size_t), intent(in), value :: n, incx1, incdx1, incx,&
-          incdx, incddx1, incddx
+subroutine AA_FMOD_C_BEGIN(la, 5spline, n, tf, x1, incx1, dx1, incdx1, ddx1, incddx1, a3, a4, a5, x, incx, dx, incdx, ddx, incddx )
+  integer(c_size_t), intent(in), value :: n, incx1, incdx1, incx, incdx, incddx1, incddx
   real(AA_FSIZE), value  :: tf
   real(AA_FSIZE), intent(in)  :: x1(n*incx1), dx1(n*incdx1),  ddx1(n*incddx1)
   real(AA_FSIZE), intent(in) :: a3(n), a4(n), a5(n)
