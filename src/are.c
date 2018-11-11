@@ -43,8 +43,8 @@
 #include "amino.h"
 
 
-static int aa_la_care_laub_select( const double *real, const double *complex ) {
-    (void)complex;
+static int aa_la_care_laub_select( const double *real, const double *_complex ) {
+    (void)_complex;
     return *real < 0;
 }
 
