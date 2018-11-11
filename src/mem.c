@@ -244,7 +244,7 @@ char* aa_mem_region_printf(aa_mem_region_t *reg, const char *fmt, ... ) {
 #ifdef HAVE_THREADS_H
 // First, try the C11 standard
 static _Thread_local aa_mem_region_t *aa_mem_region_local = NULL;
-#elseif defined TLS
+#elif defined TLS
 // Next, try some Autoconf magic
 static TLS aa_mem_region_t *aa_mem_region_local = NULL;
 #else
