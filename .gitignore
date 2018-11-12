@@ -1,3 +1,9 @@
+*.o
+src/.deps/
+src/.libs
+src/*.o
+src/test/.deps/
+src/test/*.o
 /src/mac/mac.f
 /.deps
 /build/aa_test
