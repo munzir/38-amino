@@ -27,7 +27,7 @@ For the file "/usr/share/aclocal/ax_tls.m4", replace the line:
  
 with:
 
-    m4_ifnblank([$1],[$1]))
+    m4_ifnblank([$2],[$2]))
     
 Basically, we just removed a pair of square brackets.
 
