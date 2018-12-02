@@ -15,7 +15,13 @@ simplicity.
 
 On Debian/Ubuntu:
 
-    sudo apt install autoconf autoconf-archive libgfortran libblas3gf libblas-dev liblapack3gf liblapack-dev maxima
+    sudo apt install autoconf autoconf-archive libblas-dev liblapack-dev maxima
+
+For libgfortran, install the latest lib abd lib-dev packages. For Ubuntu 18.04, I have libgfortran5 and libgfortran-8-dev packages. Do an apt search
+
+    sudo apt search libgfortran
+    
+and scroll through the list to see which ones are the latest for your distro and install them.
 
 ## Installation
 
